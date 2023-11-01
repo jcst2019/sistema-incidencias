@@ -7,37 +7,72 @@ import javafx.beans.property.StringProperty;
 
 public class Incidencia {
 	
-    private ObjectProperty<Integer> idIncidencias;
+    private ObjectProperty<Integer> idIncidencia;
     private ObjectProperty<Integer> idServicios;
+    private ObjectProperty<Integer> idSubcategoria;
+    private ObjectProperty<Integer> idImpacto;
+    private ObjectProperty<Integer> idUrgencia;
     //private StringProperty fechaRegistro;
     private StringProperty asunto;
     private StringProperty descripcion;
     private StringProperty estado;
     
-	public Incidencia(ObjectProperty<Integer> idIncidencias, ObjectProperty<Integer> idServicios, StringProperty asunto,
+	public Incidencia() {
+		super();
+	}
+
+	public Incidencia(ObjectProperty<Integer> idIncidencia, ObjectProperty<Integer> idServicios, ObjectProperty<Integer> idSubcategoria, ObjectProperty<Integer> idImpacto, ObjectProperty<Integer> idUrgencia, 
+			StringProperty asunto,
 			StringProperty descripcion, StringProperty estado) {
 		super();
-		this.idIncidencias = idIncidencias;
+		this.idIncidencia = idIncidencia;
 		this.idServicios = idServicios;
+		this.idServicios = idSubcategoria;
+		this.idServicios = idImpacto;
+		this.idServicios = idUrgencia;
 		this.asunto = asunto;
 		this.descripcion = descripcion;
 		this.estado = estado;
 	}
 
-	public ObjectProperty<Integer> getIdIncidencias() {
-		return idIncidencias;
+	public ObjectProperty<Integer> getIdIncidencia() {
+		return idIncidencia;
 	}
 
-	public void setIdIncidencias(ObjectProperty<Integer> idIncidencias) {
-		this.idIncidencias = idIncidencias;
+	public void setIdIncidencia(ObjectProperty<Integer> idIncidencia) {
+		this.idIncidencia = idIncidencia;
 	}
 
-	public ObjectProperty<Integer> getIdServicios() {
+	public ObjectProperty<Integer> getIdServicio() {
 		return idServicios;
 	}
-
+	
 	public void setIdServicios(ObjectProperty<Integer> idServicios) {
 		this.idServicios = idServicios;
+	}
+	
+	public void setIdSubcategoria(ObjectProperty<Integer> idSubcategoria) {
+		this.idSubcategoria = idSubcategoria;
+	}
+	
+	public ObjectProperty<Integer> getIdSubcategoria() {
+		return idSubcategoria;
+	}
+	
+	public void setIdImpacto(ObjectProperty<Integer> idImpacto) {
+		this.idImpacto = idImpacto;
+	}
+	
+	public ObjectProperty<Integer> getIdImpacto() {
+		return idImpacto;
+	}
+	
+	public void setIdUrgencia(ObjectProperty<Integer> idUrgencia) {
+		this.idUrgencia = idUrgencia;
+	}
+	
+	public ObjectProperty<Integer> getIdUrgencia() {
+		return idUrgencia;
 	}
 
 	public StringProperty getAsunto() {
@@ -66,9 +101,10 @@ public class Incidencia {
 
 	@Override
 	public String toString() {
-		return "Incidencia [idIncidencias=" + idIncidencias + ", idServicios=" + idServicios + ", asunto=" + asunto
+		return "Incidencia [idIncidencia=" + idIncidencia + ", idServicios=" + idServicios + ", idSubcategoria="
+				+ idSubcategoria + ", idImpacto=" + idImpacto + ", idUrgencia=" + idUrgencia + ", asunto=" + asunto
 				+ ", descripcion=" + descripcion + ", estado=" + estado + "]";
 	}
-	
+
 
 }

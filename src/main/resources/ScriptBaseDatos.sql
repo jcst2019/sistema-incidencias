@@ -118,18 +118,21 @@ drop table incidencias
 
 CREATE TABLE incidencias (
     idIncidencias INT AUTO_INCREMENT PRIMARY KEY,
-    idServicios INT ,
+    idServicio INT ,
+    idSubcategoria INT ,
+    idImpacto INT ,
+    idUrgencia INT ,
     asunto VARCHAR(100),
     descripcion VARCHAR(500),
     estado CHAR(1)
 );
 
-INSERT INTO incidencias (idServicios, asunto, descripcion, estado)
+INSERT INTO incidencias (idServicio,idSubcategoria,idImpacto,idUrgencia, asunto, descripcion, estado)
 VALUES 
- (1,'Asunto 1','Descripcion 1', 'A'),
- (2,'Asunto 2','Descripcion 1', 'A'),
- (3,'Asunto 3','Descripcion 1', 'A'),
- (4,'Asunto 4','Descripcion 1', 'A'),
- (5,'Asunto 5','Descripcion 1', 'A');
+ (1,1,1,1,'Asunto 1','Descripcion 1', 'A'),
+ (2,1,1,1,'Asunto 2','Descripcion 1', 'A'),
+ (3,3,3,1,'Asunto 3','Descripcion 1', 'A'),
+ (4,1,2,1,'Asunto 4','Descripcion 1', 'A'),
+ (5,3,2,1,'Asunto 5','Descripcion 1', 'A');
 
 

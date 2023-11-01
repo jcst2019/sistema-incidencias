@@ -72,8 +72,8 @@
                      </rowConstraints>
                      <children>
                         <Label text="Asunto" />
-                        <TextField GridPane.rowIndex="1" />
-                        <TextArea prefHeight="82.0" prefWidth="533.0" GridPane.rowIndex="3" />
+                        <TextField fx:id="txtAsunto" GridPane.rowIndex="1" />
+                        <TextArea fx:id="txtADescripcion" prefHeight="82.0" prefWidth="533.0" GridPane.rowIndex="3" />
                         <Label text="Descripcion" GridPane.rowIndex="2" />
                         <Label text="Anexos" GridPane.rowIndex="4" />
                      </children>
@@ -94,8 +94,8 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button mnemonicParsing="false" text="Grabar" />
-                        <Button mnemonicParsing="false" text="Salir" GridPane.columnIndex="1" />
+                        <Button fx:id="btnGrabar" mnemonicParsing="false" text="Grabar" onAction="#guardarIncidencia" />
+                        <Button fx:id="btnSalir" mnemonicParsing="false" text="Salir" GridPane.columnIndex="1" />
                      </children>
                   </GridPane>
                </children>
