@@ -31,66 +31,30 @@ public class RegistroIncidenciaController {
 	 
 	 @FXML
 	 public void initialize() {
-		IItem itemdao = new ItemDaoImpl();
-	    //List<Item> listaServicio = itemdao.obtenerListaItem();
-	    //cbServicio.getItems().addAll(listaServicio);
-	    ObservableList<Item> listaServicio = FXCollections.observableArrayList(itemdao.obtenerListaItem(EnumTipoItem.SERVICIO));
-	    cbServicio.setItems(listaServicio);
-	    cbServicio.setCellFactory(item -> new javafx.scene.control.ListCell<Item>() {
-	            @Override
-	            protected void updateItem(Item item, boolean empty) {
-	                super.updateItem(item, empty);
-	                if (item == null || empty) {
-	                    setText(null);
-	                } else {
-	                   setText(item.getDescripcion().get());
-	                }
-	            }
-	        });
-	    
-	    ObservableList<Item> listaSubcategoria = FXCollections.observableArrayList(itemdao.obtenerListaItem(EnumTipoItem.SUBCATEGORIA));
-	    cbSubcategoria.setItems(listaSubcategoria);
-	    cbSubcategoria.setCellFactory(item -> new javafx.scene.control.ListCell<Item>() {
-	            @Override
-	            protected void updateItem(Item item, boolean empty) {
-	                super.updateItem(item, empty);
-	                if (item == null || empty) {
-	                    setText(null);
-	                } else {
-	                   setText(item.getDescripcion().get());
-	                }
-	            }
-	        });
-	    ObservableList<Item> listaImpacto = FXCollections.observableArrayList(itemdao.obtenerListaItem(EnumTipoItem.IMPACTO));
-	    cbImpacto.setItems(listaImpacto);
-	    cbImpacto.setCellFactory(item -> new javafx.scene.control.ListCell<Item>() {
-	            @Override
-	            protected void updateItem(Item item, boolean empty) {
-	                super.updateItem(item, empty);
-	                if (item == null || empty) {
-	                    setText(null);
-	                } else {
-	                   setText(item.getDescripcion().get());
-	                }
-	            }
-	        });
-	    ObservableList<Item> listaUrgencia = FXCollections.observableArrayList(itemdao.obtenerListaItem(EnumTipoItem.URGENCIA));
-	    cbUrgencia.setItems(listaUrgencia);
-	    cbUrgencia.setCellFactory(item -> new javafx.scene.control.ListCell<Item>() {
-	            @Override
-	            protected void updateItem(Item item, boolean empty) {
-	                super.updateItem(item, empty);
-	                if (item == null || empty) {
-	                    setText(null);
-	                } else {
-	                   setText(item.getDescripcion().get());
-	                }
-	            }
-	        });
+		    inicializarComboBox(cbServicio, EnumTipoItem.SERVICIO);
+		    inicializarComboBox(cbSubcategoria, EnumTipoItem.SUBCATEGORIA);
+		    inicializarComboBox(cbImpacto, EnumTipoItem.IMPACTO);
+		    inicializarComboBox(cbUrgencia, EnumTipoItem.URGENCIA);
 	    }
 	 
 	 public Integer getSelectedId() {
 	        Item selected = cbServicio.getSelectionModel().getSelectedItem();
 	        return selected != null ? selected.getIdItem().get() : null;
-	    }	 
+	    }
+	 private void inicializarComboBox(ComboBox<Item> comboBox, EnumTipoItem tipo) {
+		    IItem itemdao = new ItemDaoImpl();
+		    ObservableList<Item> listaItems = FXCollections.observableArrayList(itemdao.obtenerListaItem(tipo));
+		    comboBox.setItems(listaItems);
+		    comboBox.setCellFactory(item -> new javafx.scene.control.ListCell<Item>() {
+		        @Override
+		        protected void updateItem(Item item, boolean empty) {
+		            super.updateItem(item, empty);
+		            if (item == null || empty) {
+		                setText(null);
+		            } else {
+		                setText(item.getDescripcion().get());
+		            }
+		        }
+		    });
+		}
 }	 
