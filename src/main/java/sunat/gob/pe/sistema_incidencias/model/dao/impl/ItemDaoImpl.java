@@ -10,13 +10,14 @@ import java.util.List;
 import sunat.gob.pe.sistema_incidencias.model.dao.IItem;
 import sunat.gob.pe.sistema_incidencias.model.entities.Item;
 import sunat.gob.pe.sistema_incidencias.model.util.Conexion;
+import sunat.gob.pe.sistema_incidencias.model.util.EnumTipoItem;
 
 public class ItemDaoImpl implements IItem  {
 
 
 	
     @Override
-	public List<Item> obtenerListaItem() {
+	public List<Item> obtenerListaItem(EnumTipoItem tipo) {
         Conexion conexion = new Conexion();
         Connection conn = conexion.getConexion();
         PreparedStatement pstmt = null;
@@ -25,7 +26,21 @@ public class ItemDaoImpl implements IItem  {
 
         try {
             System.out.println("ItemDaoImpl obtenerListaItem inicio");
-            String sql = "select idServicios,descripcion, estado from servicios";
+            //String sql = "select idServicios,descripcion, estado from servicios";
+            String sql = "";
+            switch(tipo) {
+            case SERVICIO:
+                sql = "select idServicio,descripcion, estado from servicios";
+                break;
+            case SUBCATEGORIA:
+                sql = "select idSubcategoria,descripcion, estado from subcategorias";
+                break;
+            case IMPACTO:
+                sql = "select idImpacto,descripcion, estado from impactos";
+                break;
+            default:
+                throw new IllegalArgumentException("Tipo de item no válido: " + tipo);
+        }
             pstmt = conn.prepareStatement(sql);
             rs = pstmt.executeQuery();
             while (rs.next()) {

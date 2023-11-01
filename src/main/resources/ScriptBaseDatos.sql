@@ -43,7 +43,7 @@ select * from servicios
 drop table servicios
 
 CREATE TABLE servicios (
-    idServicios INT AUTO_INCREMENT PRIMARY KEY,
+    idServicio INT AUTO_INCREMENT PRIMARY KEY,
     descripcion VARCHAR(100),
     estado CHAR(1)
 );
@@ -56,6 +56,44 @@ VALUES
  ('Servicio 4', 'A'),
  ('Servicio 5', 'A');
 
+-- =====================================
+
+select * from subcategorias
+
+drop table subcategorias
+
+CREATE TABLE subcategorias (
+    idSubcategoria INT AUTO_INCREMENT PRIMARY KEY,
+    descripcion VARCHAR(100),
+    estado CHAR(1)
+);
+
+INSERT INTO subcategorias (descripcion, estado)
+VALUES 
+ ('Subcategoria 1', 'A'),
+ ('Subcategoria 2', 'A'),
+ ('Subcategoria 3', 'A'),
+ ('Subcategoria 4', 'A'),
+ ('Subcategoria 5', 'A');
+-- =====================================
+
+select * from impactos
+
+drop table impactos
+
+CREATE TABLE impactos (
+    idImpacto INT AUTO_INCREMENT PRIMARY KEY,
+    descripcion VARCHAR(100),
+    estado CHAR(1)
+);
+
+INSERT INTO impactos (descripcion, estado)
+VALUES 
+ ('Impacto 1', 'A'),
+ ('Impacto 2', 'A'),
+ ('Impacto 3', 'A'),
+ ('Impacto 4', 'A'),
+ ('Impacto 5', 'A');
 -- =====================================
 
 select * from incidencias
