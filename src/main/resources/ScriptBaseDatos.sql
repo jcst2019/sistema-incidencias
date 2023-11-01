@@ -89,11 +89,27 @@ CREATE TABLE impactos (
 
 INSERT INTO impactos (descripcion, estado)
 VALUES 
- ('Impacto 1', 'A'),
- ('Impacto 2', 'A'),
- ('Impacto 3', 'A'),
- ('Impacto 4', 'A'),
- ('Impacto 5', 'A');
+ ('Una  Persona', 'A'),
+ ('Una UUOO', 'A');
+-- =====================================
+
+select * from urgencias
+
+drop table urgencias
+
+CREATE TABLE urgencias (
+    idUrgencia INT AUTO_INCREMENT PRIMARY KEY,
+    descripcion VARCHAR(100),
+    estado CHAR(1)
+);
+
+INSERT INTO urgencias (descripcion, estado)
+VALUES 
+ ('Alta', 'A'),
+ ('Media','A'),
+ ('Baja', 'A');
+
+
 -- =====================================
 
 select * from incidencias

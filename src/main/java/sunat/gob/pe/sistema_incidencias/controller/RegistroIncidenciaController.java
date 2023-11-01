@@ -61,8 +61,34 @@ public class RegistroIncidenciaController {
 	                }
 	            }
 	        });
+	    ObservableList<Item> listaImpacto = FXCollections.observableArrayList(itemdao.obtenerListaItem(EnumTipoItem.IMPACTO));
+	    cbImpacto.setItems(listaImpacto);
+	    cbImpacto.setCellFactory(item -> new javafx.scene.control.ListCell<Item>() {
+	            @Override
+	            protected void updateItem(Item item, boolean empty) {
+	                super.updateItem(item, empty);
+	                if (item == null || empty) {
+	                    setText(null);
+	                } else {
+	                   setText(item.getDescripcion().get());
+	                }
+	            }
+	        });
+	    ObservableList<Item> listaUrgencia = FXCollections.observableArrayList(itemdao.obtenerListaItem(EnumTipoItem.URGENCIA));
+	    cbUrgencia.setItems(listaUrgencia);
+	    cbUrgencia.setCellFactory(item -> new javafx.scene.control.ListCell<Item>() {
+	            @Override
+	            protected void updateItem(Item item, boolean empty) {
+	                super.updateItem(item, empty);
+	                if (item == null || empty) {
+	                    setText(null);
+	                } else {
+	                   setText(item.getDescripcion().get());
+	                }
+	            }
+	        });
 	    }
-	
+	 
 	 public Integer getSelectedId() {
 	        Item selected = cbServicio.getSelectionModel().getSelectedItem();
 	        return selected != null ? selected.getIdItem().get() : null;

@@ -38,6 +38,9 @@ public class ItemDaoImpl implements IItem  {
             case IMPACTO:
                 sql = "select idImpacto,descripcion, estado from impactos";
                 break;
+            case URGENCIA:
+                sql = "select idUrgencia,descripcion, estado from urgencias";
+                break;
             default:
                 throw new IllegalArgumentException("Tipo de item no válido: " + tipo);
         }
