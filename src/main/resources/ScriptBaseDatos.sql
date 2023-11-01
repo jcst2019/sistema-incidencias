@@ -1,3 +1,5 @@
+use bdIncidencias;
+
 select * from usuarios
 
 drop table usuarios
@@ -34,5 +36,46 @@ VALUES
 
 select * from usuarios
 
+-- =====================================
+
+select * from servicios
+
+drop table servicios
+
+CREATE TABLE servicios (
+    idServicios INT AUTO_INCREMENT PRIMARY KEY,
+    descripcion VARCHAR(100),
+    estado CHAR(1)
+);
+
+INSERT INTO servicios (descripcion, estado)
+VALUES 
+ ('Servicio 1', 'A'),
+ ('Servicio 2', 'A'),
+ ('Servicio 3', 'A'),
+ ('Servicio 4', 'A'),
+ ('Servicio 5', 'A');
+
+-- =====================================
+
+select * from incidencias
+
+drop table incidencias
+
+CREATE TABLE incidencias (
+    idIncidencias INT AUTO_INCREMENT PRIMARY KEY,
+    idServicios INT ,
+    asunto VARCHAR(100),
+    descripcion VARCHAR(500),
+    estado CHAR(1)
+);
+
+INSERT INTO incidencias (idServicios, asunto, descripcion, estado)
+VALUES 
+ (1,'Asunto 1','Descripcion 1', 'A'),
+ (2,'Asunto 2','Descripcion 1', 'A'),
+ (3,'Asunto 3','Descripcion 1', 'A'),
+ (4,'Asunto 4','Descripcion 1', 'A'),
+ (5,'Asunto 5','Descripcion 1', 'A');
 
 
