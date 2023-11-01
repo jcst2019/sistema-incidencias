@@ -11,7 +11,9 @@ import sunat.gob.pe.sistema_incidencias.model.util.Conexion;
 public class IncidenciaDaoImpl implements IIncidencia {
 
     @Override
-    public void guardarIncidencia(Incidencia incidencia) {
+    public boolean guardarIncidencia(Incidencia incidencia) {
+    	
+    	boolean exito = false;
         Conexion conexion = new Conexion();
         Connection conn = conexion.getConexion();
         PreparedStatement pstmt = null;
@@ -26,7 +28,10 @@ public class IncidenciaDaoImpl implements IIncidencia {
             pstmt.setString(6, incidencia.getDescripcion().get());
             pstmt.setString(7, incidencia.getEstado().get());
 
-            pstmt.executeUpdate();
+            int filasAfectadas = pstmt.executeUpdate();
+            if (filasAfectadas > 0) {
+                exito = true;
+            }
         } catch (SQLException se) {
             System.out.println(se.getMessage());
         } finally {
@@ -41,5 +46,6 @@ public class IncidenciaDaoImpl implements IIncidencia {
                 System.out.println(se.getMessage());
             }
         }
+        return exito;
     }
 }
