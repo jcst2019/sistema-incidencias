@@ -51,13 +51,13 @@
             </Pane>
             <Pane layoutX="19.0" layoutY="57.0" prefHeight="68.0" prefWidth="671.0" style="-fx-border-color: #2D75E8;">
                <children>
-                  <Button fx:id="btnBuscarIncidente" layoutX="570.0" layoutY="22.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="81.0" text="Buscar" />
+                  <Button fx:id="btnBuscarIncidente" layoutX="570.0" layoutY="22.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="81.0" text="Buscar" onAction="#buscarPorFiltroIncidencia"/>
                   <Label layoutX="14.0" layoutY="26.0" text="Tipo de Busqueda">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="cmbBucarIncidente" layoutX="126.0" layoutY="22.0" prefHeight="25.0" prefWidth="188.0" promptText="Selecionar Tipo Busqueda" />
+                  <ComboBox fx:id="cmbBuscarIncidente" layoutX="126.0" layoutY="22.0" prefHeight="25.0" prefWidth="188.0" promptText="Selecionar Tipo Busqueda" onAction="#onComboBoxSelection"/>
                   <TextField fx:id="txtBusquedaIncidente" layoutX="339.0" layoutY="22.0" prefHeight="25.0" prefWidth="201.0" />
                </children></Pane>
          </children>

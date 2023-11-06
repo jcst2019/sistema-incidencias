@@ -10,14 +10,25 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import sunat.gob.pe.sistema_incidencias.model.dao.IIncidencia;
 import sunat.gob.pe.sistema_incidencias.model.dao.impl.IncidenciaDaoImpl;
 import sunat.gob.pe.sistema_incidencias.model.entities.Incidencia;
+import sunat.gob.pe.sistema_incidencias.model.entities.TipoBusqueda;
+import sunat.gob.pe.sistema_incidencias.model.util.EnumTipoBusqueda;
 
 public class BusquedaIncidenciaController implements Initializable{
+	
+    @FXML
+    private ComboBox<TipoBusqueda> cmbBuscarIncidente;
+    
+	@FXML
+	private TextField txtBusquedaIncidente;
 	
     @FXML
     private TableView<Incidencia> incidentesTable;
@@ -55,10 +66,28 @@ public class BusquedaIncidenciaController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
         System.out.println("BusquedaIncidenciaController initialize");
+        llenarTiposBusqueda();
         enlazarTabla();
-        llenarDatosEnTabla();
+        //llenarDatosEnTabla();
 		
 	}
+	@FXML
+	private void onComboBoxSelection() {
+	    habilitarCampos();
+	}
+    private void llenarTiposBusqueda() {
+    	
+    	ObservableList<TipoBusqueda> tiposBusqueda = FXCollections.observableArrayList(
+    	        new TipoBusqueda(1, "Todos"),
+    	       new TipoBusqueda(2, "Usuario Registra"),
+    	        new TipoBusqueda(3, "Numero Incidencia")
+    	);
+    	cmbBuscarIncidente.setItems(tiposBusqueda);
+    	
+    	//ObservableList<EnumTipoBusqueda> tiposBusqueda = FXCollections.observableArrayList(EnumTipoBusqueda.values());
+    	//cmbBuscarIncidente.setItems(tiposBusqueda);
+
+    }
     private void enlazarTabla() {
     	IIncidencia incidenciaDao = new IncidenciaDaoImpl();
     	incidentesTable.setItems(incidenciaData);
@@ -82,10 +111,6 @@ public class BusquedaIncidenciaController implements Initializable{
                 }
             };
         });
-        //servicioColumn.setCellValueFactory(rowData -> rowData.getValue().getIdServicio().asString());
-        //subcategoriaColumn.setCellValueFactory(rowData -> rowData.getValue().getIdSubcategoria().asString());
-        //impactoColumn.setCellValueFactory(rowData -> rowData.getValue().getIdImpacto().asString());
-        //urgenciaColumn.setCellValueFactory(rowData -> rowData.getValue().getIdUrgencia().asString());
         servicioColumn.setCellValueFactory(cellData -> {
             int idServicio = cellData.getValue().getIdServicio().get();
             return new SimpleStringProperty(incidenciaDao.obtenerDescripcionServicio(idServicio));
@@ -107,11 +132,63 @@ public class BusquedaIncidenciaController implements Initializable{
         });
 
     }
+    
     private void llenarDatosEnTabla() {
         IIncidencia incidenciaDao = new IncidenciaDaoImpl();
+        incidenciaData.clear(); // Elimina todos los elementos existentes en la lista
         incidenciaData.addAll(incidenciaDao.busquedaTotalIncidencias());
     }
-	
-	
+    
+    private void mostrarAlerta(String tipo, String mensaje) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(tipo);
+        alert.setContentText(mensaje);
+        alert.showAndWait();
+    }
+    
+    private boolean validaIncidencia() {
+        boolean camposValidos = true;
+        TipoBusqueda seleccion = cmbBuscarIncidente.getSelectionModel().getSelectedItem();
+
+        if (seleccion == null) {
+            camposValidos = false;
+            mostrarAlerta("Error", "Por favor, seleccione un tipo de búsqueda.");
+        } else if (seleccion.getId() != 1 && txtBusquedaIncidente.getText().trim().isEmpty()) {
+            camposValidos = false;
+            mostrarAlerta("Error", "Por favor, complete el campo de búsqueda.");
+        }
+
+        return camposValidos;
+    }
+
+    private void habilitarCampos() {
+        TipoBusqueda seleccion = cmbBuscarIncidente.getSelectionModel().getSelectedItem();
+        if (seleccion != null) {
+        	 if (seleccion.getId() == EnumTipoBusqueda.TODOS.getId()) {
+                txtBusquedaIncidente.setDisable(true);
+            } else {
+                txtBusquedaIncidente.setDisable(false);
+            }
+        }
+    }
+
+
+
+	public void limpiarCampos() {
+		  cmbBuscarIncidente.getSelectionModel().clearSelection();
+		  txtBusquedaIncidente.clear();
+
+		}
+    
+	public void buscarPorFiltroIncidencia() {
+    	
+    	if(validaIncidencia()) {
+    		 IIncidencia incidenciaDao = new IncidenciaDaoImpl();
+    		 incidenciaData.clear(); // Elimina todos los elementos existentes en la lista
+    	     incidenciaData.addAll(incidenciaDao.busquedaTotalIncidencias());
+    	     //habilitarCampos();
+    	}
+    	
+    }
 
 }
