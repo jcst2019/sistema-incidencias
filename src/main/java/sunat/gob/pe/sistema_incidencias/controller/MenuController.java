@@ -35,6 +35,12 @@ public class MenuController implements Initializable {
         abrir("buscarIncidencia", "Buscar Incidencia");
     }
     
+  
+    @FXML
+    private void abrirCreditos() {
+        abrir("acercaDe", "Acerca De");
+    }
+    
     private void abrir(String fxml, String title) {
         try {
             //FXMLLoader loader = new FXMLLoader(getClass().getResource(url));

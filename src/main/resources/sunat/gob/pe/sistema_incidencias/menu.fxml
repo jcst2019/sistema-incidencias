@@ -102,14 +102,14 @@
                         <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
                     </padding>
                 </HBox>
-                <HBox spacing="5.0" styleClass="menu-item">
+                <HBox onMouseClicked="#abrirCreditos" spacing="5.0" styleClass="menu-item">
                     <children>
                         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../../../../img/Sobre.png" />
                             </image>
                         </ImageView>
-                        <Label text="Sobre">
+                        <Label text="Acerca de">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font></Label>
