@@ -125,15 +125,16 @@ CREATE TABLE incidencias (
     asunto VARCHAR(100),
     descripcion VARCHAR(500),
     fechaRegistro DATETIME,
+    idUsuarioRegistra INT,
     estado CHAR(1)
 );
 
-INSERT INTO incidencias (idServicio,idSubcategoria,idImpacto,idUrgencia, asunto, descripcion,fechaRegistro, estado)
+INSERT INTO incidencias (idServicio,idSubcategoria,idImpacto,idUrgencia, asunto, descripcion,fechaRegistro, idUsuarioRegistra, estado)
 VALUES 
- (1,1,1,1,'Asunto 1','Descripcion 1',NOW(), 'A'),
- (2,1,1,1,'Asunto 2','Descripcion 1',NOW(), 'A'),
- (3,3,3,1,'Asunto 3','Descripcion 1',NOW(), 'A'),
- (4,1,2,1,'Asunto 4','Descripcion 1',NOW(), 'A'),
- (5,3,2,1,'Asunto 5','Descripcion 1',NOW(), 'A');
+ (1,1,1,1,'Asunto 1','Descripcion 1',NOW(),11, 'A'),
+ (2,1,1,1,'Asunto 2','Descripcion 1',NOW(),11, 'A'),
+ (3,3,3,1,'Asunto 3','Descripcion 1',NOW(),11, 'A'),
+ (4,1,2,1,'Asunto 4','Descripcion 1',NOW(),11, 'A'),
+ (5,3,2,1,'Asunto 5','Descripcion 1',NOW(),11, 'A');
 
 

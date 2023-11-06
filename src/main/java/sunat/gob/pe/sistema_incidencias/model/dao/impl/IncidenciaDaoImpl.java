@@ -18,7 +18,7 @@ public class IncidenciaDaoImpl implements IIncidencia {
         Connection conn = conexion.getConexion();
         PreparedStatement pstmt = null;
         try {
-            String sql = "INSERT INTO incidencias (idServicio, idSubcategoria, idImpacto, idUrgencia, asunto, descripcion, fechaRegistro, estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO incidencias (idServicio, idSubcategoria, idImpacto, idUrgencia, asunto, descripcion, fechaRegistro, idUsuarioRegistra, estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, incidencia.getIdServicio().get());
             pstmt.setInt(2, incidencia.getIdSubcategoria().get());
@@ -27,7 +27,8 @@ public class IncidenciaDaoImpl implements IIncidencia {
             pstmt.setString(5, incidencia.getAsunto().get());
             pstmt.setString(6, incidencia.getDescripcion().get());
             pstmt.setObject(7, incidencia.getFechaRegistro().get());
-            pstmt.setString(8, incidencia.getEstado().get());
+            pstmt.setInt(8, incidencia.getIdUsuarioRegistra().get());
+            pstmt.setString(9, incidencia.getEstado().get());
 
             int filasAfectadas = pstmt.executeUpdate();
             if (filasAfectadas > 0) {

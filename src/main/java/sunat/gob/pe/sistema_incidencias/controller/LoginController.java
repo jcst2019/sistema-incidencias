@@ -14,6 +14,8 @@ import javafx.stage.Window;
 import sunat.gob.pe.sistema_incidencias.App;
 import sunat.gob.pe.sistema_incidencias.model.dao.IUsuarioDao;
 import sunat.gob.pe.sistema_incidencias.model.dao.impl.UsuarioDaoImpl;
+import sunat.gob.pe.sistema_incidencias.model.entities.Usuario;
+import sunat.gob.pe.sistema_incidencias.model.entities.UsuarioGlobal;
 
 public class LoginController {
 
@@ -46,9 +48,17 @@ public class LoginController {
             while (it.hasNext()) {
                 Integer key = (Integer) it.next();
                 System.out.println("Clave: " + key + " -> Valor: " + mapUsuario.get(key));
+                //System.out.println("Clave: " + key + " -> Valor: " + mapUsuario.get(key));
                 if (key != 4) {
                     mostrarAlertas("Warning", ""+mapUsuario.get(key), Alert.AlertType.WARNING);
                     return;
+                }else {
+                    Object value = mapUsuario.get(key);
+                    if (value instanceof Usuario) {
+                        Integer idUsuario = ((Usuario) value).getIdUsuario();
+                        System.out.println("ID de Usuario: " + idUsuario);
+                        UsuarioGlobal.setIdUsuario(idUsuario);
+                    }
                 }
             }
         }

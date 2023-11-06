@@ -22,6 +22,7 @@ import sunat.gob.pe.sistema_incidencias.model.dao.impl.IncidenciaDaoImpl;
 import sunat.gob.pe.sistema_incidencias.model.dao.impl.ItemDaoImpl;
 import sunat.gob.pe.sistema_incidencias.model.entities.Incidencia;
 import sunat.gob.pe.sistema_incidencias.model.entities.Item;
+import sunat.gob.pe.sistema_incidencias.model.entities.UsuarioGlobal;
 import sunat.gob.pe.sistema_incidencias.model.util.EnumTipoItem;
 
 public class RegistroIncidenciaController {
@@ -80,6 +81,7 @@ public class RegistroIncidenciaController {
 		        int idImpacto = cbImpacto.getSelectionModel().getSelectedItem().getIdItem().get();
 		        int idUrgencia = cbUrgencia.getSelectionModel().getSelectedItem().getIdItem().get();
 		        LocalDateTime now = LocalDateTime.now();
+		        Integer idUsuario = UsuarioGlobal.getIdUsuario();
 		        String asunto = txtAsunto.getText();
 		        String descripcion = txtADescripcion.getText();
 		        String estado = "A";
@@ -98,6 +100,7 @@ public class RegistroIncidenciaController {
 		        incidencia.setAsunto(new SimpleStringProperty(asunto));
 		        incidencia.setDescripcion(new SimpleStringProperty(descripcion));
 		        incidencia.setFechaRegistro(new SimpleObjectProperty<>(now));
+		        incidencia.setIdUsuarioRegistra(new SimpleObjectProperty<>(idUsuario));
 		        incidencia.setEstado(new SimpleStringProperty(estado));
 		        System.out.println(incidencia);
 		        IIncidencia incidenciaDao = new IncidenciaDaoImpl();

@@ -13,10 +13,10 @@ public class Incidencia {
     private ObjectProperty<Integer> idSubcategoria;
     private ObjectProperty<Integer> idImpacto;
     private ObjectProperty<Integer> idUrgencia;
-    //private StringProperty fechaRegistro;
     private StringProperty asunto;
     private StringProperty descripcion;
     private ObjectProperty<LocalDateTime> fechaRegistro;
+    private ObjectProperty<Integer> idUsuarioRegistra;
     private StringProperty estado;
     
 	public Incidencia() {
@@ -25,7 +25,7 @@ public class Incidencia {
 
 	public Incidencia(ObjectProperty<Integer> idIncidencia, ObjectProperty<Integer> idServicios, ObjectProperty<Integer> idSubcategoria, ObjectProperty<Integer> idImpacto, ObjectProperty<Integer> idUrgencia, 
 			StringProperty asunto,
-			StringProperty descripcion,ObjectProperty<LocalDateTime> fechaRegistro, StringProperty estado) {
+			StringProperty descripcion,ObjectProperty<LocalDateTime> fechaRegistro,ObjectProperty<Integer> idUsuarioRegistra, StringProperty estado) {
 		super();
 		this.idIncidencia = idIncidencia;
 		this.idServicios = idServicios;
@@ -35,6 +35,7 @@ public class Incidencia {
 		this.asunto = asunto;
 		this.descripcion = descripcion;
 		this.fechaRegistro= fechaRegistro;
+		this.idUsuarioRegistra=idUsuarioRegistra;
 		this.estado = estado;
 	}
 
@@ -101,6 +102,14 @@ public class Incidencia {
 	public void setFechaRegistro(ObjectProperty<LocalDateTime> fechaRegistro) {
 	    this.fechaRegistro = fechaRegistro;
 	}
+	
+	public ObjectProperty<Integer> getIdUsuarioRegistra() {
+		return idUsuarioRegistra;
+	}
+
+	public void setIdUsuarioRegistra(ObjectProperty<Integer> idUsuarioRegistra) {
+		this.idUsuarioRegistra = idUsuarioRegistra;
+	}
 
 	public StringProperty getEstado() {
 		return estado;
@@ -114,7 +123,8 @@ public class Incidencia {
 	public String toString() {
 		return "Incidencia [idIncidencia=" + idIncidencia + ", idServicios=" + idServicios + ", idSubcategoria="
 				+ idSubcategoria + ", idImpacto=" + idImpacto + ", idUrgencia=" + idUrgencia + ", asunto=" + asunto
-				+ ", descripcion=" + descripcion + ", fechaRegistro=" + fechaRegistro + ", estado=" + estado + "]";
+				+ ", descripcion=" + descripcion + ", fechaRegistro=" + fechaRegistro + ", idUsuarioRegistra="
+				+ idUsuarioRegistra + ", estado=" + estado + "]";
 	}
 
 }
