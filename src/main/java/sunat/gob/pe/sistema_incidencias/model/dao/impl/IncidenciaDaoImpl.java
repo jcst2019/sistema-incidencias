@@ -268,4 +268,103 @@ public class IncidenciaDaoImpl implements IIncidencia {
 
 	       return descripcion;
 	   }
+
+	   @Override
+	   public List<Incidencia> busquedaporUsuarioRegistra(int idUsuario) {
+	       Conexion conexion = new Conexion();
+	       Connection conn = conexion.getConexion();
+	       PreparedStatement pstmt = null;
+	       List<Incidencia> listaIncicencias = new ArrayList<>();
+	       ResultSet rs = null;
+
+	       try {
+	           String sql = "SELECT * FROM incidencias WHERE idUsuarioRegistra = ?";
+	           pstmt = conn.prepareStatement(sql);
+	           pstmt.setInt(1, idUsuario);
+
+	           rs = pstmt.executeQuery();
+	           while (rs.next()) {
+	               listaIncicencias.add(new Incidencia(
+	                   new SimpleObjectProperty<>(rs.getInt(1)),
+	                   new SimpleObjectProperty<>(rs.getInt(2)),
+	                   new SimpleObjectProperty<>(rs.getInt(3)),
+	                   new SimpleObjectProperty<>(rs.getInt(4)),
+	                   new SimpleObjectProperty<>(rs.getInt(5)),
+	                   new SimpleStringProperty(rs.getString(6)),
+	                   new SimpleStringProperty(rs.getString(7)),
+	                   new SimpleObjectProperty<>(rs.getTimestamp(8).toLocalDateTime()),
+	                   new SimpleObjectProperty<>(rs.getInt(9)),
+	                   new SimpleStringProperty(rs.getString(10))
+	               ));
+	           }
+	       } catch (SQLException se) {
+	           System.out.println(se.getMessage());
+	       } finally {
+	            try {
+	                if (conn != null) {
+	                    conn.close();
+	                }
+	                if (pstmt != null) {
+	                    pstmt.close();
+	                }
+	                if (rs != null) {
+	                    rs.close();
+	                }
+	            } catch (SQLException se) {
+	                System.out.println(se.getMessage());
+	            }
+	       }
+
+	       return listaIncicencias;
+	   }
+
+	   @Override
+	   public Incidencia busquedaporIdIncidencia(int idIncidencia) {
+	       Conexion conexion = new Conexion();
+	       Connection conn = conexion.getConexion();
+	       PreparedStatement pstmt = null;
+	       Incidencia incidencia = null;
+	       ResultSet rs = null;
+
+	       try {
+	           String sql = "SELECT * FROM incidencias WHERE idIncidencia = ?";
+	           pstmt = conn.prepareStatement(sql);
+	           pstmt.setInt(1, idIncidencia);
+
+	           rs = pstmt.executeQuery();
+	           if (rs.next()) {
+	               incidencia = new Incidencia(
+	                   new SimpleObjectProperty<>(rs.getInt(1)),
+	                   new SimpleObjectProperty<>(rs.getInt(2)),
+	                   new SimpleObjectProperty<>(rs.getInt(3)),
+	                   new SimpleObjectProperty<>(rs.getInt(4)),
+	                   new SimpleObjectProperty<>(rs.getInt(5)),
+	                   new SimpleStringProperty(rs.getString(6)),
+	                   new SimpleStringProperty(rs.getString(7)),
+	                   new SimpleObjectProperty<>(rs.getTimestamp(8).toLocalDateTime()),
+	                   new SimpleObjectProperty<>(rs.getInt(9)),
+	                   new SimpleStringProperty(rs.getString(10))
+	               );
+	           }
+	       } catch (SQLException se) {
+	           System.out.println(se.getMessage());
+	       } finally {
+	            try {
+	                if (conn != null) {
+	                    conn.close();
+	                }
+	                if (pstmt != null) {
+	                    pstmt.close();
+	                }
+	                if (rs != null) {
+	                    rs.close();
+	                }
+	            } catch (SQLException se) {
+	                System.out.println(se.getMessage());
+	            }
+	       }
+
+	       return incidencia;
+	   }
+
 }

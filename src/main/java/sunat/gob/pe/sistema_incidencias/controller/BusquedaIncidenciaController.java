@@ -181,14 +181,23 @@ public class BusquedaIncidenciaController implements Initializable{
 		}
     
 	public void buscarPorFiltroIncidencia() {
-    	
-    	if(validaIncidencia()) {
-    		 IIncidencia incidenciaDao = new IncidenciaDaoImpl();
-    		 incidenciaData.clear(); // Elimina todos los elementos existentes en la lista
-    	     incidenciaData.addAll(incidenciaDao.busquedaTotalIncidencias());
-    	     //habilitarCampos();
-    	}
-    	
-    }
+	    if(validaIncidencia()) {
+	        TipoBusqueda seleccion = cmbBuscarIncidente.getSelectionModel().getSelectedItem();
+	        IIncidencia incidenciaDao = new IncidenciaDaoImpl();
+	        incidenciaData.clear();
+	        
+	        if (seleccion.getId() == EnumTipoBusqueda.TODOS.getId()) {
+	            incidenciaData.addAll(incidenciaDao.busquedaTotalIncidencias());
+	        } else if (seleccion.getId() == EnumTipoBusqueda.USUARIO_REGISTRA.getId()) {
+	        	 incidenciaData.addAll(incidenciaDao.busquedaporUsuarioRegistra(Integer.parseInt(txtBusquedaIncidente.getText().trim())));
+	        } else if (seleccion.getId() == EnumTipoBusqueda.NUMERO_INCIDENCIA.getId()) {
+	        	 incidenciaData.addAll(incidenciaDao.busquedaporIdIncidencia(Integer.parseInt(txtBusquedaIncidente.getText().trim())));
+	        } else {
+	            // Código en caso de que no se seleccione ningún filtro
+	        }
+	    }
+	}
+
+
 
 }
