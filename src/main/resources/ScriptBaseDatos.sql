@@ -50,11 +50,9 @@ CREATE TABLE servicios (
 
 INSERT INTO servicios (descripcion, estado)
 VALUES 
- ('Servicio 1', 'A'),
- ('Servicio 2', 'A'),
- ('Servicio 3', 'A'),
- ('Servicio 4', 'A'),
- ('Servicio 5', 'A');
+ ('SOFTWARE', 'A'),
+ ('HARDWARE', 'A'),
+ ('TELECOMUNICACIONES', 'A');
 
 -- =====================================
 
@@ -70,11 +68,19 @@ CREATE TABLE subcategorias (
 
 INSERT INTO subcategorias (descripcion, estado)
 VALUES 
- ('Subcategoria 1', 'A'),
- ('Subcategoria 2', 'A'),
- ('Subcategoria 3', 'A'),
- ('Subcategoria 4', 'A'),
- ('Subcategoria 5', 'A');
+ ('OFFICE 365', 'A'),
+ ('SOFTWARE BASE', 'A'),
+ ('SOFTWARE COMERCIAL', 'A'),
+ ('CERTIFICADO DIGITAL', 'A'),
+ ('EQUIPAMIENTO INFORMATICO', 'A'),
+ ('SERVICIO DE IMPRESIÓN', 'A'),
+ ('TELEFONIA IP', 'A'),
+ ('CONEXIÓN VPN', 'A'),
+ ('ESCRITORIO VIRTUA', 'A'),
+ ('VIDEO CONFERENCIA', 'A'),
+ ('CONEXIÓN WIFI', 'A'),
+ ('PUERTO DE RED', 'A'),
+ ('CABLEADO', 'A');
 -- =====================================
 
 select * from impactos
@@ -89,8 +95,9 @@ CREATE TABLE impactos (
 
 INSERT INTO impactos (descripcion, estado)
 VALUES 
- ('Una  Persona', 'A'),
- ('Una UUOO', 'A');
+ ('Un  Departamento', 'A'),
+ ('Una  Servicio', 'A'),
+ ('Una Persona', 'A');
 -- =====================================
 
 select * from urgencias
@@ -105,6 +112,7 @@ CREATE TABLE urgencias (
 
 INSERT INTO urgencias (descripcion, estado)
 VALUES 
+ ('Crítica', 'A'),
  ('Alta', 'A'),
  ('Media','A'),
  ('Baja', 'A');
@@ -126,15 +134,42 @@ CREATE TABLE incidencias (
     descripcion VARCHAR(500),
     fechaRegistro DATETIME,
     idUsuarioRegistra INT,
+    idUsuarioAsignado INT,
     estado CHAR(1)
 );
 
+-- Relación foránea entre incidencias y urgencias
+ALTER TABLE incidencias
+ADD CONSTRAINT fk_incidencias_urgencias
+FOREIGN KEY (idUrgencia) REFERENCES urgencias(idUrgencia);
+
+-- Relación foránea entre incidencias y impactos
+ALTER TABLE incidencias
+ADD CONSTRAINT fk_incidencias_impactos
+FOREIGN KEY (idImpacto) REFERENCES impactos(idImpacto);
+
+-- Relación foránea entre incidencias y subcategorias
+ALTER TABLE incidencias
+ADD CONSTRAINT fk_incidencias_subcategorias
+FOREIGN KEY (idSubcategoria) REFERENCES subcategorias(idSubcategoria);
+
+-- Relación foránea entre incidencias y servicios
+ALTER TABLE incidencias
+ADD CONSTRAINT fk_incidencias_servicios
+FOREIGN KEY (idServicio) REFERENCES servicios(idServicio);
+
+
+INSERT INTO incidencias (idServicio,idSubcategoria,idImpacto,idUrgencia, asunto, descripcion,fechaRegistro, idUsuarioRegistra,idUsuarioAsignado, estado)
+VALUES 
+ (1,1,1,1,'Asunto 1','Descripcion 1',NOW(),11,null, 'A'),
+ (2,1,1,1,'Asunto 2','Descripcion 1',NOW(),11,null, 'A'),
+ (3,3,3,1,'Asunto 3','Descripcion 1',NOW(),11,null, 'A'),
+ (1,1,2,1,'Asunto 4','Descripcion 1',NOW(),11,null, 'A'),
+ (2,3,2,1,'Asunto 5','Descripcion 1',NOW(),11,null, 'A');
+
+
 INSERT INTO incidencias (idServicio,idSubcategoria,idImpacto,idUrgencia, asunto, descripcion,fechaRegistro, idUsuarioRegistra, estado)
 VALUES 
- (1,1,1,1,'Asunto 1','Descripcion 1',NOW(),11, 'A'),
- (2,1,1,1,'Asunto 2','Descripcion 1',NOW(),11, 'A'),
- (3,3,3,1,'Asunto 3','Descripcion 1',NOW(),11, 'A'),
- (4,1,2,1,'Asunto 4','Descripcion 1',NOW(),11, 'A'),
- (5,3,2,1,'Asunto 5','Descripcion 1',NOW(),11, 'A');
+ (1,2,3,4,'hola','prueba',NOW(),11, 'A')
 
 
