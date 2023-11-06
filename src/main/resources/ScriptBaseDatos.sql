@@ -168,8 +168,4 @@ VALUES
  (2,3,2,1,'Asunto 5','Descripcion 1',NOW(),11,null, 'A');
 
 
-INSERT INTO incidencias (idServicio,idSubcategoria,idImpacto,idUrgencia, asunto, descripcion,fechaRegistro, idUsuarioRegistra, estado)
-VALUES 
- (1,2,3,4,'hola','prueba',NOW(),11, 'A')
-
 
