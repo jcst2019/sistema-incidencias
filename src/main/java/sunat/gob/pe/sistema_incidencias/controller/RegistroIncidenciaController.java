@@ -1,6 +1,7 @@
 package sunat.gob.pe.sistema_incidencias.controller;
 
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javafx.beans.property.ObjectProperty;
@@ -78,6 +79,7 @@ public class RegistroIncidenciaController {
 		        int idSubcategoria = getSelectedId(cbSubcategoria);
 		        int idImpacto = cbImpacto.getSelectionModel().getSelectedItem().getIdItem().get();
 		        int idUrgencia = cbUrgencia.getSelectionModel().getSelectedItem().getIdItem().get();
+		        LocalDateTime now = LocalDateTime.now();
 		        String asunto = txtAsunto.getText();
 		        String descripcion = txtADescripcion.getText();
 		        String estado = "A";
@@ -95,6 +97,7 @@ public class RegistroIncidenciaController {
 		        incidencia.setIdUrgencia(new SimpleObjectProperty<>(idUrgencia));
 		        incidencia.setAsunto(new SimpleStringProperty(asunto));
 		        incidencia.setDescripcion(new SimpleStringProperty(descripcion));
+		        incidencia.setFechaRegistro(new SimpleObjectProperty<>(now));
 		        incidencia.setEstado(new SimpleStringProperty(estado));
 		        System.out.println(incidencia);
 		        IIncidencia incidenciaDao = new IncidenciaDaoImpl();

@@ -1,6 +1,7 @@
 package sunat.gob.pe.sistema_incidencias.model.entities;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
 
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.StringProperty;
@@ -15,6 +16,7 @@ public class Incidencia {
     //private StringProperty fechaRegistro;
     private StringProperty asunto;
     private StringProperty descripcion;
+    private ObjectProperty<LocalDateTime> fechaRegistro;
     private StringProperty estado;
     
 	public Incidencia() {
@@ -23,7 +25,7 @@ public class Incidencia {
 
 	public Incidencia(ObjectProperty<Integer> idIncidencia, ObjectProperty<Integer> idServicios, ObjectProperty<Integer> idSubcategoria, ObjectProperty<Integer> idImpacto, ObjectProperty<Integer> idUrgencia, 
 			StringProperty asunto,
-			StringProperty descripcion, StringProperty estado) {
+			StringProperty descripcion,ObjectProperty<LocalDateTime> fechaRegistro, StringProperty estado) {
 		super();
 		this.idIncidencia = idIncidencia;
 		this.idServicios = idServicios;
@@ -32,6 +34,7 @@ public class Incidencia {
 		this.idServicios = idUrgencia;
 		this.asunto = asunto;
 		this.descripcion = descripcion;
+		this.fechaRegistro= fechaRegistro;
 		this.estado = estado;
 	}
 
@@ -90,6 +93,14 @@ public class Incidencia {
 	public void setDescripcion(StringProperty descripcion) {
 		this.descripcion = descripcion;
 	}
+	
+	public ObjectProperty<LocalDateTime> getFechaRegistro() {
+	    return fechaRegistro;
+	}
+
+	public void setFechaRegistro(ObjectProperty<LocalDateTime> fechaRegistro) {
+	    this.fechaRegistro = fechaRegistro;
+	}
 
 	public StringProperty getEstado() {
 		return estado;
@@ -103,8 +114,7 @@ public class Incidencia {
 	public String toString() {
 		return "Incidencia [idIncidencia=" + idIncidencia + ", idServicios=" + idServicios + ", idSubcategoria="
 				+ idSubcategoria + ", idImpacto=" + idImpacto + ", idUrgencia=" + idUrgencia + ", asunto=" + asunto
-				+ ", descripcion=" + descripcion + ", estado=" + estado + "]";
+				+ ", descripcion=" + descripcion + ", fechaRegistro=" + fechaRegistro + ", estado=" + estado + "]";
 	}
-
 
 }
