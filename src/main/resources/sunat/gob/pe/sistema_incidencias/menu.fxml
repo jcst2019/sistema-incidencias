@@ -54,7 +54,7 @@
                         <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
                     </padding>
                 </HBox>
-                <HBox onMouseClicked="#abrirProdutos" spacing="5.0" styleClass="menu-item">
+                <HBox onMouseClicked="#buscarIncidencia" spacing="5.0" styleClass="menu-item">
                     <children>
                         <ImageView fitHeight="15.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -70,7 +70,7 @@
                         <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
                     </padding>
                 </HBox>
-                <HBox onMouseClicked="#abrirClientes" spacing="5.0" styleClass="menu-item">
+                <HBox onMouseClicked="#buscarIncidencia" spacing="5.0" styleClass="menu-item">
                     <children>
                         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -86,7 +86,7 @@
                         <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
                     </padding>
                 </HBox>
-                <HBox onMouseClicked="#abrirFornecedores" spacing="5.0" styleClass="menu-item">
+                <HBox onMouseClicked="#buscarIncidencia" spacing="5.0" styleClass="menu-item">
                     <children>
                         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                             <image>

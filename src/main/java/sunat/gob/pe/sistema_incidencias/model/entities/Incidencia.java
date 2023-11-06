@@ -9,7 +9,7 @@ import javafx.beans.property.StringProperty;
 public class Incidencia {
 	
     private ObjectProperty<Integer> idIncidencia;
-    private ObjectProperty<Integer> idServicios;
+    private ObjectProperty<Integer> idServicio;
     private ObjectProperty<Integer> idSubcategoria;
     private ObjectProperty<Integer> idImpacto;
     private ObjectProperty<Integer> idUrgencia;
@@ -23,15 +23,15 @@ public class Incidencia {
 		super();
 	}
 
-	public Incidencia(ObjectProperty<Integer> idIncidencia, ObjectProperty<Integer> idServicios, ObjectProperty<Integer> idSubcategoria, ObjectProperty<Integer> idImpacto, ObjectProperty<Integer> idUrgencia, 
+	public Incidencia(ObjectProperty<Integer> idIncidencia, ObjectProperty<Integer> idServicio, ObjectProperty<Integer> idSubcategoria, ObjectProperty<Integer> idImpacto, ObjectProperty<Integer> idUrgencia, 
 			StringProperty asunto,
 			StringProperty descripcion,ObjectProperty<LocalDateTime> fechaRegistro,ObjectProperty<Integer> idUsuarioRegistra, StringProperty estado) {
 		super();
 		this.idIncidencia = idIncidencia;
-		this.idServicios = idServicios;
-		this.idServicios = idSubcategoria;
-		this.idServicios = idImpacto;
-		this.idServicios = idUrgencia;
+		this.idServicio = idServicio;
+		this.idSubcategoria = idSubcategoria;
+		this.idImpacto = idImpacto;
+		this.idUrgencia = idUrgencia;
 		this.asunto = asunto;
 		this.descripcion = descripcion;
 		this.fechaRegistro= fechaRegistro;
@@ -48,11 +48,11 @@ public class Incidencia {
 	}
 
 	public ObjectProperty<Integer> getIdServicio() {
-		return idServicios;
+		return idServicio;
 	}
 	
-	public void setIdServicios(ObjectProperty<Integer> idServicios) {
-		this.idServicios = idServicios;
+	public void setIdServicios(ObjectProperty<Integer> idServicio) {
+		this.idServicio = idServicio;
 	}
 	
 	public void setIdSubcategoria(ObjectProperty<Integer> idSubcategoria) {
@@ -121,7 +121,7 @@ public class Incidencia {
 
 	@Override
 	public String toString() {
-		return "Incidencia [idIncidencia=" + idIncidencia + ", idServicios=" + idServicios + ", idSubcategoria="
+		return "Incidencia [idIncidencia=" + idIncidencia + ", idServicio=" + idServicio + ", idSubcategoria="
 				+ idSubcategoria + ", idImpacto=" + idImpacto + ", idUrgencia=" + idUrgencia + ", asunto=" + asunto
 				+ ", descripcion=" + descripcion + ", fechaRegistro=" + fechaRegistro + ", idUsuarioRegistra="
 				+ idUsuarioRegistra + ", estado=" + estado + "]";

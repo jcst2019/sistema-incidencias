@@ -117,7 +117,7 @@ select * from incidencias
 drop table incidencias
 
 CREATE TABLE incidencias (
-    idIncidencias INT AUTO_INCREMENT PRIMARY KEY,
+    idIncidencia INT AUTO_INCREMENT PRIMARY KEY,
     idServicio INT ,
     idSubcategoria INT ,
     idImpacto INT ,

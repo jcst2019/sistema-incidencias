@@ -29,29 +29,10 @@ public class MenuController implements Initializable {
     private void abrirRegistroIncidencia() {
         abrir("registroIncidencia", "Registro Incidencia");
     }
-    @FXML
-    private void abrirProdutos() {
-        abrir("/com/jdenner/view/Produto.fxml", "Produtos");
-    }
-   
-    @FXML
-    private void abrirClientes() {
-        abrir("/com/jdenner/view/Cliente.fxml", "Clientes");
-    }
     
     @FXML
-    private void abrirFornecedores() {
-        abrir("/com/jdenner/view/Fornecedor.fxml", "Fornecedores");
-    }
-    
-    @FXML
-    private void abrirCompras() {
-        abrir("/com/jdenner/view/Compra.fxml", "Compras");
-    }
-
-    @FXML
-    private void abrirVendas() {
-        abrir("/com/jdenner/view/Venda.fxml", "Vendas");
+    private void buscarIncidencia() {
+        abrir("buscarIncidencia", "Buscar Incidencia");
     }
     
     private void abrir(String fxml, String title) {
