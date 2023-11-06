@@ -1,46 +1,40 @@
-<?xml version='1.0' encoding='UTF-8'?>
-
+<?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="313.0" prefWidth="528.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sunat.gob.pe.sistema_incidencias.controller.LoginController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#autenticarUsuario" prefHeight="407.0" prefWidth="348.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sunat.gob.pe.sistema_incidencias.controller.LoginController">
    <children>
-      <Label alignment="CENTER" layoutX="99.0" layoutY="31.0" prefHeight="23.0" prefWidth="332.0" text="Sistema de Incidencias" textAlignment="CENTER">
+      <Label alignment="CENTER" layoutX="8.0" layoutY="313.0" prefHeight="23.0" prefWidth="332.0" text="Sistema de Incidencias" textAlignment="CENTER" textFill="#2796db">
          <font>
-            <Font name="Arial Bold" size="24.0" />
+            <Font name="Arial Bold" size="14.0" />
          </font>
       </Label>
-      <GridPane layoutX="29.0" layoutY="85.0" prefHeight="157.0" prefWidth="471.0" vgap="10.0">
+      <GridPane layoutX="74.0" layoutY="139.0" prefHeight="98.0" prefWidth="211.0" vgap="10.0">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="245.0" minWidth="10.0" prefWidth="195.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="245.0" minWidth="10.0" prefWidth="195.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="333.0" minWidth="10.0" prefWidth="305.0" />
         </columnConstraints>
         <rowConstraints>
+          <RowConstraints />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="56.0" minHeight="10.0" prefHeight="49.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="63.0" minHeight="10.0" prefHeight="63.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="56.0" minHeight="10.0" prefHeight="49.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Usuario:" GridPane.halignment="RIGHT">
-               <font>
-                  <Font name="Arial Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label text="Clave:" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
-               <font>
-                  <Font name="Arial Bold" size="14.0" />
-               </font>
-            </Label>
-            <TextField fx:id="txtUsuario" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="155.0" promptText="Ingrese usuario." GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+            <TextField fx:id="txtUsuario" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="20.0" prefWidth="155.0" promptText="Usuario" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <font>
                   <Font name="Comic Sans MS" size="14.0" />
                </font>
@@ -48,22 +42,45 @@
                   <Insets />
                </GridPane.margin>
             </TextField>
-            <PasswordField fx:id="txtClave" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="155.0" promptText="Ingrese clave." GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <PasswordField fx:id="txtClave" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="155.0" promptText="Contraseña" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <font>
                   <Font name="Comic Sans MS" size="14.0" />
                </font>
             </PasswordField>
-            <Button mnemonicParsing="false" onAction="#autenticarUsuario" text="Continuar" GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <font>
-                  <Font name="Arial Bold" size="14.0" />
-               </font>
-            </Button>
+            <ImageView fitHeight="31.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-color: #fff;" GridPane.rowIndex="1">
+               <image>
+                  <Image url="@../../../../img/login2.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="31.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2">
+               <image>
+                  <Image url="@../../../../img/pssw.jpg" />
+               </image>
+            </ImageView>
          </children>
       </GridPane>
-      <Label layoutX="238.0" layoutY="252.0" text="© 2023">
+      <Label layoutX="151.0" layoutY="336.0" text="© 2023" textFill="#2796db">
          <font>
-            <Font name="Arial Bold" size="16.0" />
+            <Font name="Arial Bold" size="14.0" />
          </font>
       </Label>
+      <Button fx:id="btnLogin" layoutX="74.0" layoutY="249.0" mnemonicParsing="false" onAction="#autenticarUsuario" prefHeight="31.0" prefWidth="200.0" style="-fx-background-color: #2796DB;" text="Iniciar sesión" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </Button>
+      <Line endX="100.0" layoutX="173.0" layoutY="82.0" startX="-100.0" stroke="#3e7ce9" />
+      <ImageView fitHeight="90.0" fitWidth="115.0" layoutX="129.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../img/login.jpg" />
+         </image>
+      </ImageView>
+      <Line endX="100.0" layoutX="173.0" layoutY="299.0" startX="-100.0" stroke="#3e7ce9" />
    </children>
+   <effect>
+      <ColorAdjust />
+   </effect>
+   <cursor>
+      <Cursor fx:constant="CLOSED_HAND" />
+   </cursor>
 </AnchorPane>
