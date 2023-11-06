@@ -109,4 +109,163 @@ public class IncidenciaDaoImpl implements IIncidencia {
 
         return listaIncicencias;
     }
+	   @Override
+	    public String obtenerDescripcionServicio(int idServicio) {
+	        String descripcion = null;
+	        Conexion conexion = new Conexion();
+	        Connection conn = conexion.getConexion();
+	        PreparedStatement pstmt = null;
+	        ResultSet rs = null;
+
+	        try {
+	            String sql = "SELECT descripcion FROM servicios WHERE idServicio = ?";
+	            pstmt = conn.prepareStatement(sql);
+	            pstmt.setInt(1, idServicio);
+
+	            rs = pstmt.executeQuery();
+
+	            if (rs.next()) {
+	                descripcion = rs.getString("descripcion");
+	            }
+
+	        } catch (SQLException se) {
+	            System.out.println(se.getMessage());
+	        } finally {
+	            try {
+	                if (conn != null) {
+	                    conn.close();
+	                }
+	                if (pstmt != null) {
+	                    pstmt.close();
+	                }
+	                if (rs != null) {
+	                    rs.close();
+	                }
+	            } catch (SQLException se) {
+	                System.out.println(se.getMessage());
+	            }
+	        }
+
+	        return descripcion;
+	    }
+
+	   @Override
+	   public String obtenerDescripcionSubcategoria(int idSubcategoria) {
+	       String descripcion = null;
+	       Conexion conexion = new Conexion();
+	       Connection conn = conexion.getConexion();
+	       PreparedStatement pstmt = null;
+	       ResultSet rs = null;
+
+	       try {
+	           String sql = "SELECT descripcion FROM subcategorias WHERE idSubcategoria = ?";
+	           pstmt = conn.prepareStatement(sql);
+	           pstmt.setInt(1, idSubcategoria);
+
+	           rs = pstmt.executeQuery();
+
+	           if (rs.next()) {
+	               descripcion = rs.getString("descripcion");
+	           }
+
+	       } catch (SQLException se) {
+	           System.out.println(se.getMessage());
+	       } finally {
+	           try {
+	               if (conn != null) {
+	                   conn.close();
+	               }
+	               if (pstmt != null) {
+	                   pstmt.close();
+	               }
+	               if (rs != null) {
+	                   rs.close();
+	               }
+	           } catch (SQLException se) {
+	               System.out.println(se.getMessage());
+	           }
+	       }
+
+	       return descripcion;
+	   }
+
+	   @Override
+	   public String obtenerDescripcionImpacto(int idImpacto) {
+	       String descripcion = null;
+	       Conexion conexion = new Conexion();
+	       Connection conn = conexion.getConexion();
+	       PreparedStatement pstmt = null;
+	       ResultSet rs = null;
+
+	       try {
+	           String sql = "SELECT descripcion FROM impactos WHERE idImpacto = ?";
+	           pstmt = conn.prepareStatement(sql);
+	           pstmt.setInt(1, idImpacto);
+
+	           rs = pstmt.executeQuery();
+
+	           if (rs.next()) {
+	               descripcion = rs.getString("descripcion");
+	           }
+
+	       } catch (SQLException se) {
+	           System.out.println(se.getMessage());
+	       } finally {
+	           try {
+	               if (conn != null) {
+	                   conn.close();
+	               }
+	               if (pstmt != null) {
+	                   pstmt.close();
+	               }
+	               if (rs != null) {
+	                   rs.close();
+	               }
+	           } catch (SQLException se) {
+	               System.out.println(se.getMessage());
+	           }
+	       }
+
+	       return descripcion;
+	   }
+
+	   @Override
+	   public String obtenerDescripcionUrgencia(int idUrgencia) {
+	       String descripcion = null;
+	       Conexion conexion = new Conexion();
+	       Connection conn = conexion.getConexion();
+	       PreparedStatement pstmt = null;
+	       ResultSet rs = null;
+
+	       try {
+	           String sql = "SELECT descripcion FROM urgencias WHERE idUrgencia = ?";
+	           pstmt = conn.prepareStatement(sql);
+	           pstmt.setInt(1, idUrgencia);
+
+	           rs = pstmt.executeQuery();
+
+	           if (rs.next()) {
+	               descripcion = rs.getString("descripcion");
+	           }
+
+	       } catch (SQLException se) {
+	           System.out.println(se.getMessage());
+	       } finally {
+	           try {
+	               if (conn != null) {
+	                   conn.close();
+	               }
+	               if (pstmt != null) {
+	                   pstmt.close();
+	               }
+	               if (rs != null) {
+	                   rs.close();
+	               }
+	           } catch (SQLException se) {
+	               System.out.println(se.getMessage());
+	           }
+	       }
+
+	       return descripcion;
+	   }
 }

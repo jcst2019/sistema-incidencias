@@ -26,6 +26,9 @@ public class BusquedaIncidenciaController implements Initializable{
     private TableColumn<Incidencia, Integer> idColumn;
     
     @FXML
+    private TableColumn<Incidencia, Integer> idUsuarioRegistraColum;
+    
+    @FXML
     private TableColumn<Incidencia, String> asuntoColumn;
     
     @FXML
@@ -57,9 +60,11 @@ public class BusquedaIncidenciaController implements Initializable{
 		
 	}
     private void enlazarTabla() {
+    	IIncidencia incidenciaDao = new IncidenciaDaoImpl();
     	incidentesTable.setItems(incidenciaData);
 
         idColumn.setCellValueFactory(rowData -> rowData.getValue().getIdIncidencia());
+        idUsuarioRegistraColum.setCellValueFactory(rowData -> rowData.getValue().getIdUsuarioRegistra());
         asuntoColumn.setCellValueFactory(rowData -> rowData.getValue().getAsunto());
         descripcionColumn.setCellValueFactory(rowData -> rowData.getValue().getDescripcion());
         fechaRegistroColumn.setCellValueFactory(rowData -> rowData.getValue().getFechaRegistro());
@@ -77,10 +82,29 @@ public class BusquedaIncidenciaController implements Initializable{
                 }
             };
         });
-        servicioColumn.setCellValueFactory(rowData -> rowData.getValue().getIdServicio().asString());
-        subcategoriaColumn.setCellValueFactory(rowData -> rowData.getValue().getIdSubcategoria().asString());
-        impactoColumn.setCellValueFactory(rowData -> rowData.getValue().getIdImpacto().asString());
-        urgenciaColumn.setCellValueFactory(rowData -> rowData.getValue().getIdUrgencia().asString());
+        //servicioColumn.setCellValueFactory(rowData -> rowData.getValue().getIdServicio().asString());
+        //subcategoriaColumn.setCellValueFactory(rowData -> rowData.getValue().getIdSubcategoria().asString());
+        //impactoColumn.setCellValueFactory(rowData -> rowData.getValue().getIdImpacto().asString());
+        //urgenciaColumn.setCellValueFactory(rowData -> rowData.getValue().getIdUrgencia().asString());
+        servicioColumn.setCellValueFactory(cellData -> {
+            int idServicio = cellData.getValue().getIdServicio().get();
+            return new SimpleStringProperty(incidenciaDao.obtenerDescripcionServicio(idServicio));
+        });
+
+        subcategoriaColumn.setCellValueFactory(cellData -> {
+            int idSubcategoria = cellData.getValue().getIdSubcategoria().get();
+            return new SimpleStringProperty(incidenciaDao.obtenerDescripcionSubcategoria(idSubcategoria));
+        });
+
+        impactoColumn.setCellValueFactory(cellData -> {
+            int idImpacto = cellData.getValue().getIdImpacto().get();
+            return new SimpleStringProperty(incidenciaDao.obtenerDescripcionImpacto(idImpacto));
+        });
+
+        urgenciaColumn.setCellValueFactory(cellData -> {
+            int idUrgencia = cellData.getValue().getIdUrgencia().get();
+            return new SimpleStringProperty(incidenciaDao.obtenerDescripcionUrgencia(idUrgencia));
+        });
 
     }
     private void llenarDatosEnTabla() {

@@ -37,10 +37,11 @@
                   <TableView fx:id="incidentesTable" prefHeight="425.0" prefWidth="671.0">
                     <columns>
                       <TableColumn fx:id="idColumn" prefWidth="75.0" text="ID" />
+                      <TableColumn fx:id="idUsuarioRegistraColum" prefWidth="75.0" text="ID Usuario Registra" />
                       <TableColumn fx:id="asuntoColumn" prefWidth="75.0" text="Asunto" />
-                      <TableColumn fx:id="descripcionColumn" prefWidth="75.0" text="Descripcion" />
-                      <TableColumn fx:id="fechaRegistroColumn" text="Fecha de Registro" prefWidth="150" />   
-                      <TableColumn fx:id="servicioColumn" prefWidth="100.0" text="Servicio" />
+                      <TableColumn fx:id="descripcionColumn" prefWidth="141.0" text="Descripcion" />
+                      <TableColumn fx:id="fechaRegistroColumn" prefWidth="113.0" text="Fecha de Registro" />   
+                      <TableColumn fx:id="servicioColumn" prefWidth="71.0" text="Servicio" />
             		  <TableColumn fx:id="subcategoriaColumn" prefWidth="100.0" text="Subcategoría" />
             		  <TableColumn fx:id="impactoColumn" prefWidth="100.0" text="Impacto" />
             	      <TableColumn fx:id="urgenciaColumn" prefWidth="100.0" text="Urgencia" />               
