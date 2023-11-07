@@ -26,6 +26,17 @@ import sunat.gob.pe.sistema_incidencias.model.dao.impl.graficoDaoImpl;
 import sunat.gob.pe.sistema_incidencias.model.entities.barra;
 
 public class DashboardController implements Initializable {
+    @FXML
+    private Label lblTotalIncidencias;
+
+    @FXML
+    private Label lblTotalUsuarios;
+
+    @FXML
+	private Label lblTotalUrgencias;
+
+	@FXML
+	private Label lblIncidenciaMax;
 	
     @FXML
     private BarChart<String, Number> barChart;
@@ -46,19 +57,11 @@ public class DashboardController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
           llenarGrafico();
-          //inicializarPieChart();
-       
+          llenarLabels();  
     }    
     
      public void llenarGrafico()
      {  
-     /*    XYChart.Series<String, Number> series1 = new XYChart.Series<>();
-        series1.setName("2023");
-        series1.getData().add(new XYChart.Data<>("January", 200));
-        series1.getData().add(new XYChart.Data<>("February", 275));
-
-        barChart.getData().addAll(series1);}
-     */
        List<barra> barras = graficoDao.grafico1();
          
         XYChart.Series<String, Number> series = new XYChart.Series<>();
@@ -92,27 +95,16 @@ public class DashboardController implements Initializable {
         node.getChildren().add(dataLabel);
     }
      
-    public void retornaBusqueda(ActionEvent actionEvent) throws IOException {
-         
-          FXMLLoader loader =  App.getFXMLLoader("busquedaAirbn");
-            Parent busquedaAirbn = loader.load();
-            App.scene.setRoot(busquedaAirbn);
-               Window window = App.scene.getWindow();
-            window.setWidth(900);
-            window.setHeight(700);
-    }
-    public void inicializarPieChart() {
-        // Crear los datos para el PieChart
-        ObservableList<PieChart.Data> pieChartData =
-                FXCollections.observableArrayList(
-                        new PieChart.Data("Categoría A", 30),
-                        new PieChart.Data("Categoría B", 20),
-                        new PieChart.Data("Categoría C", 50)
-                );
+     public void llenarLabels() {
+         // Aquí puedes realizar cualquier cálculo o acceder a tus datos para obtener los valores reales
+         String totalIncidencias = "100";  // Cambia esto con el valor real
+         String totalUsuarios = "25";   // Cambia esto con el valor real
+         String totalUrgencias = "6";    // Cambia esto con el valor real
+         String incidenciaMax = "HOla";      // Cambia esto con el valor real
 
-        // Asignar los datos al PieChart
-        pieChart.setData(pieChartData);
-        pieChart.setTitle("Ejemplo de PieChart");
-    }
-    
+         lblTotalIncidencias.setText(totalIncidencias);
+         lblTotalUsuarios.setText(totalUsuarios);
+         lblTotalUrgencias.setText(totalUrgencias);
+         lblIncidenciaMax.setText(incidenciaMax);
+     }
 }
