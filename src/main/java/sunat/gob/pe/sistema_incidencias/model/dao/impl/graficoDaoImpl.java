@@ -25,14 +25,22 @@ public class graficoDaoImpl implements Igrafico {
       
           try {
 
-             String sql = "SELECT Departamento, COUNT(1) as count FROM departamento GROUP BY Departamento";
-          
+             //String sql = "SELECT Departamento, COUNT(1) as count FROM departamento GROUP BY Departamento";
+             String sql = "SELECT\r\n"
+             		+ " s.descripcion AS tipo_incidencia,\r\n"
+             		+ " COUNT(*) AS total\r\n"
+             		+ " FROM incidencias i\r\n"
+             		+ " JOIN subcategorias s ON i.idSubcategoria = s.idSubcategoria\r\n"
+             		+ " GROUP BY tipo_incidencia\r\n"
+             		+ " ORDER BY total DESC\r\n"
+             		+ "  ";
+
             pstmt = conn.prepareStatement(sql);
 
             rs = pstmt.executeQuery();
             while (rs.next()) {
                 listaBarra.add(new barra(rs.getString(1), rs.getInt(2) ));
-                    System.out.println("DISTRITO:" + rs.getString(1)+ ": " + rs.getInt(2));
+                    System.out.println("Incidencias:" + rs.getString(1)+ ": " + rs.getInt(2));
             }
            
         } catch (SQLException se) {
