@@ -49,7 +49,7 @@
                         <Label text="Juan Carlos SOLAR TORRES" GridPane.columnIndex="1" />
                         <Label text="Cesar David MATOS GUERRERO" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <Label text="Lenin Alexander QUINTANA CUBAS" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Label text="Henry Gabriel RONCESOS ALAMO" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label text="Henry Gabriel RONCEROS ALAMO" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                         <Label text="Eder GARCIA SAAVEDRA" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                      </children>
                   </GridPane>
