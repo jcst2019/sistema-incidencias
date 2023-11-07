@@ -83,9 +83,7 @@ public class BusquedaIncidenciaController implements Initializable{
     	        new TipoBusqueda(3, "Numero Incidencia")
     	);
     	cmbBuscarIncidente.setItems(tiposBusqueda);
-    	
-    	//ObservableList<EnumTipoBusqueda> tiposBusqueda = FXCollections.observableArrayList(EnumTipoBusqueda.values());
-    	//cmbBuscarIncidente.setItems(tiposBusqueda);
+    
 
     }
     private void enlazarTabla() {
@@ -133,12 +131,6 @@ public class BusquedaIncidenciaController implements Initializable{
 
     }
     
-    private void llenarDatosEnTabla() {
-        IIncidencia incidenciaDao = new IncidenciaDaoImpl();
-        incidenciaData.clear(); // Elimina todos los elementos existentes en la lista
-        incidenciaData.addAll(incidenciaDao.busquedaTotalIncidencias());
-    }
-    
     private void mostrarAlerta(String tipo, String mensaje) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(tipo);
@@ -171,8 +163,6 @@ public class BusquedaIncidenciaController implements Initializable{
             }
         }
     }
-
-
 
 	public void limpiarCampos() {
 		  cmbBuscarIncidente.getSelectionModel().clearSelection();

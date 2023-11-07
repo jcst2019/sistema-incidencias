@@ -1,17 +1,13 @@
 package sunat.gob.pe.sistema_incidencias.controller;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
@@ -19,8 +15,6 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
-import javafx.stage.Window;
-import sunat.gob.pe.sistema_incidencias.App;
 import sunat.gob.pe.sistema_incidencias.model.dao.Igrafico;
 import sunat.gob.pe.sistema_incidencias.model.dao.impl.graficoDaoImpl;
 import sunat.gob.pe.sistema_incidencias.model.entities.barra;
@@ -96,11 +90,11 @@ public class DashboardController implements Initializable {
     }
      
      public void llenarLabels() {
-         // Aquí puedes realizar cualquier cálculo o acceder a tus datos para obtener los valores reales
-         String totalIncidencias = graficoDao.obtenerTotalIncidencias();  // Cambia esto con el valor real
-         String totalUsuarios = graficoDao.obtenerTotalUsuarios();   // Cambia esto con el valor real
-         String totalUrgencias = graficoDao.obtenerTotalUrgencias();    // Cambia esto con el valor real
-         String incidenciaMax = graficoDao.obtenerIncidenciaMaxima();      // Cambia esto con el valor real
+
+         String totalIncidencias = graficoDao.obtenerTotalIncidencias();  
+         String totalUsuarios = graficoDao.obtenerTotalUsuarios();   
+         String totalUrgencias = graficoDao.obtenerTotalUrgencias();    
+         String incidenciaMax = graficoDao.obtenerIncidenciaMaxima();     
 
          lblTotalIncidencias.setText(totalIncidencias);
          lblTotalUsuarios.setText(totalUsuarios);

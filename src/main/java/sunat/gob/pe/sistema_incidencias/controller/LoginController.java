@@ -48,7 +48,6 @@ public class LoginController {
             while (it.hasNext()) {
                 Integer key = (Integer) it.next();
                 System.out.println("Clave: " + key + " -> Valor: " + mapUsuario.get(key));
-                //System.out.println("Clave: " + key + " -> Valor: " + mapUsuario.get(key));
                 if (key != 4) {
                     mostrarAlertas("Warning", ""+mapUsuario.get(key), Alert.AlertType.WARNING);
                     return;
@@ -69,13 +68,6 @@ public class LoginController {
         Window window = App.scene.getWindow();
         window.setWidth(1020);
         window.setHeight(700);
-        /*if(validarDatos()){
-            FXMLLoader loader =  App.getFXMLLoader("dashboard");
-            Parent dashboard = loader.load();
-            App.scene.setRoot(dashboard);
-            DashboardController dashboardController = loader.<DashboardController>getController();
-            dashboardController.setMensaje(txtUsuario.getText());
-        }*/
 
     }
 

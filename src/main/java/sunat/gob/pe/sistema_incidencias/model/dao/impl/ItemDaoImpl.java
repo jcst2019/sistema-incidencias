@@ -26,7 +26,6 @@ public class ItemDaoImpl implements IItem  {
 
         try {
             System.out.println("ItemDaoImpl obtenerListaItem inicio");
-            //String sql = "select idServicios,descripcion, estado from servicios";
             String sql = "";
             switch(tipo) {
             case SERVICIO:

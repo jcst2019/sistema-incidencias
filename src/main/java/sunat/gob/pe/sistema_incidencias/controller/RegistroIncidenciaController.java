@@ -2,9 +2,6 @@ package sunat.gob.pe.sistema_incidencias.controller;
 
 
 import java.time.LocalDateTime;
-import java.util.List;
-
-import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -12,12 +9,10 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListCell;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import sunat.gob.pe.sistema_incidencias.model.dao.IIncidencia;
 import sunat.gob.pe.sistema_incidencias.model.dao.IItem;
-import sunat.gob.pe.sistema_incidencias.model.dao.IUsuarioDao;
 import sunat.gob.pe.sistema_incidencias.model.dao.impl.IncidenciaDaoImpl;
 import sunat.gob.pe.sistema_incidencias.model.dao.impl.ItemDaoImpl;
 import sunat.gob.pe.sistema_incidencias.model.entities.Incidencia;

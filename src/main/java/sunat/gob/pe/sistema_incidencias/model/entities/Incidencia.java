@@ -1,6 +1,5 @@
 package sunat.gob.pe.sistema_incidencias.model.entities;
 
-import java.sql.Date;
 import java.time.LocalDateTime;
 
 import javafx.beans.property.ObjectProperty;

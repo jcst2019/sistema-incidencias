@@ -43,7 +43,6 @@ public class MenuController implements Initializable {
     
     private void abrir(String fxml, String title) {
         try {
-            //FXMLLoader loader = new FXMLLoader(getClass().getResource(url));
             FXMLLoader loader = new  FXMLLoader(App.class.getResource(fxml + ".fxml"));      
             Parent content = loader.load();
             Tab tab = new Tab(title);
