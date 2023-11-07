@@ -15,6 +15,9 @@ CREATE TABLE usuarios (
     estado CHAR(1)
 );
 
+
+
+
 INSERT INTO usuarios (dni, nombre, apellido, usuario, contrasenha, correo, estado)
 VALUES 
 ('12345678', 'Juan', 'Pérez', 'juanperez', 'clave123', 'juan@example.com', 'A'),
@@ -138,6 +141,8 @@ CREATE TABLE incidencias (
     estado CHAR(1)
 );
 
+
+
 -- Relación foránea entre incidencias y urgencias
 ALTER TABLE incidencias
 ADD CONSTRAINT fk_incidencias_urgencias
@@ -157,6 +162,10 @@ FOREIGN KEY (idSubcategoria) REFERENCES subcategorias(idSubcategoria);
 ALTER TABLE incidencias
 ADD CONSTRAINT fk_incidencias_servicios
 FOREIGN KEY (idServicio) REFERENCES servicios(idServicio);
+
+ALTER TABLE incidencias
+ADD CONSTRAINT fk_incidencias_usuarios
+FOREIGN KEY (idUsuarioAsignado) REFERENCES usuarios(idUsuario);
 
 
 INSERT INTO incidencias (idServicio,idSubcategoria,idImpacto,idUrgencia, asunto, descripcion,fechaRegistro, idUsuarioRegistra,idUsuarioAsignado, estado)
