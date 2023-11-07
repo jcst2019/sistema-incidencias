@@ -97,10 +97,10 @@ public class DashboardController implements Initializable {
      
      public void llenarLabels() {
          // Aquí puedes realizar cualquier cálculo o acceder a tus datos para obtener los valores reales
-         String totalIncidencias = "100";  // Cambia esto con el valor real
-         String totalUsuarios = "25";   // Cambia esto con el valor real
-         String totalUrgencias = "6";    // Cambia esto con el valor real
-         String incidenciaMax = "HOla";      // Cambia esto con el valor real
+         String totalIncidencias = graficoDao.obtenerTotalIncidencias();  // Cambia esto con el valor real
+         String totalUsuarios = graficoDao.obtenerTotalUsuarios();   // Cambia esto con el valor real
+         String totalUrgencias = graficoDao.obtenerTotalUrgencias();    // Cambia esto con el valor real
+         String incidenciaMax = graficoDao.obtenerIncidenciaMaxima();      // Cambia esto con el valor real
 
          lblTotalIncidencias.setText(totalIncidencias);
          lblTotalUsuarios.setText(totalUsuarios);

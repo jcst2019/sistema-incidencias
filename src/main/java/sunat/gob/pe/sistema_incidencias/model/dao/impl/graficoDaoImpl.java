@@ -25,7 +25,6 @@ public class graficoDaoImpl implements Igrafico {
       
           try {
 
-             //String sql = "SELECT Departamento, COUNT(1) as count FROM departamento GROUP BY Departamento";
              String sql = "SELECT\r\n"
              		+ " s.descripcion AS tipo_incidencia,\r\n"
              		+ " COUNT(*) AS total\r\n"
@@ -63,5 +62,168 @@ public class graficoDaoImpl implements Igrafico {
         return listaBarra;
         
     }
+
+	@Override
+	public String obtenerTotalIncidencias() {
+	     Conexion conexion = new Conexion();
+	        Connection conn = conexion.getConexion();
+	        PreparedStatement pstmt = null;
+	        String totalIncidencia = null;
+	      
+	          try {
+
+	             String sql = "SELECT COUNT(*) AS total_incidencias FROM incidencias";
+
+	            pstmt = conn.prepareStatement(sql);
+
+	            rs = pstmt.executeQuery();
+	            while (rs.next()) {
+	            	totalIncidencia = rs.getString(1);
+	                System.out.println("obtenerTotalIncidencias:" + rs.getString(1));
+	            }
+	           
+	        } catch (SQLException se) {
+	            System.out.println(se.getMessage());
+	        } finally {
+	            try {
+	                if (conn != null) {
+	                    conn.close();
+	                }
+	                if (pstmt != null) {
+	                    pstmt.close();
+	                }
+	                if (rs != null) {
+	                    rs.close();
+	                }
+	            } catch (SQLException se) {
+	                System.out.println(se.getMessage());
+	            }
+	        }
+	        return totalIncidencia;
+	}
+
+	@Override
+	public String obtenerTotalUsuarios() {
+	     Conexion conexion = new Conexion();
+	        Connection conn = conexion.getConexion();
+	        PreparedStatement pstmt = null;
+	        String totalUsuarios = null;
+	      
+	          try {
+
+	             String sql = "SELECT COUNT(*) AS total_usuarios FROM usuarios";
+
+	            pstmt = conn.prepareStatement(sql);
+
+	            rs = pstmt.executeQuery();
+	            while (rs.next()) {
+	            	totalUsuarios = rs.getString(1);
+	                System.out.println("obtenerTotalUsuarios:" + rs.getString(1));
+	            }
+	           
+	        } catch (SQLException se) {
+	            System.out.println(se.getMessage());
+	        } finally {
+	            try {
+	                if (conn != null) {
+	                    conn.close();
+	                }
+	                if (pstmt != null) {
+	                    pstmt.close();
+	                }
+	                if (rs != null) {
+	                    rs.close();
+	                }
+	            } catch (SQLException se) {
+	                System.out.println(se.getMessage());
+	            }
+	        }
+	        return totalUsuarios;
+	}
+
+	@Override
+	public String obtenerTotalUrgencias() {
+	     Conexion conexion = new Conexion();
+	        Connection conn = conexion.getConexion();
+	        PreparedStatement pstmt = null;
+	        String totalUsuarios = null;
+	      
+	          try {
+
+	             String sql = "SELECT COUNT(*) FROM subcategorias";
+
+	            pstmt = conn.prepareStatement(sql);
+
+	            rs = pstmt.executeQuery();
+	            while (rs.next()) {
+	            	totalUsuarios = rs.getString(1);
+	                System.out.println("obtenerTotalUsuarios:" + rs.getString(1));
+	            }
+	           
+	        } catch (SQLException se) {
+	            System.out.println(se.getMessage());
+	        } finally {
+	            try {
+	                if (conn != null) {
+	                    conn.close();
+	                }
+	                if (pstmt != null) {
+	                    pstmt.close();
+	                }
+	                if (rs != null) {
+	                    rs.close();
+	                }
+	            } catch (SQLException se) {
+	                System.out.println(se.getMessage());
+	            }
+	        }
+	        return totalUsuarios;
+	}
+
+	@Override
+	public String obtenerIncidenciaMaxima() {
+	     Conexion conexion = new Conexion();
+	        Connection conn = conexion.getConexion();
+	        PreparedStatement pstmt = null;
+	        String incidenciaMax = null;
+	      
+	          try {
+
+	             String sql = " SELECT\r\n"
+	             		+ "    s.descripcion AS tipo_incidencia,\r\n"
+	             		+ "    COUNT(*) AS total\r\n"
+	             		+ "    FROM incidencias i\r\n"
+	             		+ "    JOIN subcategorias s ON i.idSubcategoria = s.idSubcategoria\r\n"
+	             		+ "    GROUP BY tipo_incidencia\r\n"
+	             		+ "    ORDER BY total DESC\r\n"
+	             		+ "    LIMIT 1";
+
+	            pstmt = conn.prepareStatement(sql);
+
+	            rs = pstmt.executeQuery();
+	            while (rs.next()) {
+	            	incidenciaMax = rs.getString(1);
+	                System.out.println("obtenerTotalUsuarios:" + rs.getString(1));
+	            }
+	           
+	        } catch (SQLException se) {
+	            System.out.println(se.getMessage());
+	        } finally {
+	            try {
+	                if (conn != null) {
+	                    conn.close();
+	                }
+	                if (pstmt != null) {
+	                    pstmt.close();
+	                }
+	                if (rs != null) {
+	                    rs.close();
+	                }
+	            } catch (SQLException se) {
+	                System.out.println(se.getMessage());
+	            }
+	        }
+	        return incidenciaMax;
+	}
     
 }

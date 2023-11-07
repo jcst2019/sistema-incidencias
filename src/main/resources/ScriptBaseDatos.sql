@@ -79,7 +79,7 @@ VALUES
  ('SERVICIO DE IMPRESIÓN', 'A'),
  ('TELEFONIA IP', 'A'),
  ('CONEXIÓN VPN', 'A'),
- ('ESCRITORIO VIRTUA', 'A'),
+ ('ESCRITORIO VIRTUAL', 'A'),
  ('VIDEO CONFERENCIA', 'A'),
  ('CONEXIÓN WIFI', 'A'),
  ('PUERTO DE RED', 'A'),
@@ -176,5 +176,55 @@ VALUES
  (1,1,2,1,'Asunto 4','Descripcion 1',NOW(),11,null, 'A'),
  (2,3,2,1,'Asunto 5','Descripcion 1',NOW(),11,null, 'A');
 
+
+DELIMITER //
+
+CREATE PROCEDURE dashboard_info()
+BEGIN
+    -- Total de incidencias
+    SELECT COUNT(*) AS total_incidencias FROM incidencias;
+
+    -- Total de usuarios
+    SELECT COUNT(*) AS total_usuarios FROM usuarios;
+
+    -- Incidencias por día, por mes y por año
+    SELECT 
+        DATE(fechaRegistro) AS dia,
+        MONTH(fechaRegistro) AS mes,
+        YEAR(fechaRegistro) AS anio,
+        COUNT(*) AS total_incidencias
+    FROM incidencias
+    GROUP BY dia, mes, anio;
+
+    -- Tipo de incidencia más repetitiva
+    SELECT
+        s.descripcion AS tipo_incidencia,
+        COUNT(*) AS total
+    FROM incidencias i
+    JOIN subcategorias s ON i.idSubcategoria = s.idSubcategoria
+    GROUP BY tipo_incidencia
+    ORDER BY total DESC
+    LIMIT 1;
+END//
+
+DELIMITER ;
+
+CALL dashboard_info();
+
+    SELECT 
+        DATE(fechaRegistro) AS dia,
+        MONTH(fechaRegistro) AS mes,
+        YEAR(fechaRegistro) AS anio,
+        COUNT(*) AS total_incidencias
+    FROM incidencias
+    GROUP BY dia, mes, anio;
+
+    SELECT
+        s.descripcion AS tipo_incidencia,
+        COUNT(*) AS total
+    FROM incidencias i
+    JOIN subcategorias s ON i.idSubcategoria = s.idSubcategoria
+    GROUP BY tipo_incidencia
+    ORDER BY total DESC
 
 
